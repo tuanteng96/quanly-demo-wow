@@ -88,9 +88,36 @@ html {
 
 //Reset Framework7
 .page-content {
-    background: #f2942c;
+    
 }
-
+.navbars.navbar-hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+.ptr-preloader {
+    visibility: hidden;
+    opacity: 0;
+}
+.ptr-transitioning {
+    .ptr-preloader {
+        visibility: visibility;
+        opacity: 1;
+    }
+}
+.page.no-navbar .page-content {
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: calc(var(--f7-page-navbar-offset, 0px) + var(--f7-page-toolbar-top-offset, 0px) + var(--f7-page-subnavbar-offset, 0px) + var(--f7-page-searchbar-offset, 0px) + var(--f7-page-content-extra-padding-top, 0px));
+        top: 0;
+        left: 0;
+        background: $color-app;
+    }
+    &.ptr-content:after {
+        top: var(--f7-navbar-height);
+    }
+}
 .toolbar {
     padding: 0;
     background: $white;
